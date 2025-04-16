@@ -10,31 +10,34 @@ There are three actions:
 - **dump_nvs** - will parse a specified NVS partition and dump its contents.
 
 # Setup
-`pip install -r requirements.txt`
+
+There is no setup, just run the scripts with `uv`.
+
+Dump the flash from your chip with `esptool.py -b 921600 read_flash 0 ALL flash_dump.bin`
 
 # Example Usage
 ## Show all partitions
-`$ python3 esp32_image_parser.py show_partitions espwroom32.bin`
+`$ uv run --script esp32_image_parser.py show_partitions flash_dump.bin`
 
 ## Dump a specific partition
-Dumps to ble_data_out.bin
+Dumps to spiffs_out.bin
 
-`$ python3 esp32_image_parser.py dump_partition espwroom32.bin -partition ble_data`
+`$ uv run --script esp32_image_parser.py dump_partition flash_dump.bin -partition spiffs`
 
-Dumps to ble_data.dump
+Dumps to spiffs.dump
 
-`$ python3 esp32_image_parser.py dump_partition espwroom32.bin -partition ble_data -output ble_data.dump`
+`$ uv run --script esp32_image_parser.py dump_partition flash_dump.bin -partition spiffs -output spiffs.dump`
 
 ## Convert a specific app partition into an ELF file
-Converts ota_0 partition into ELF. Writes to ota_0.elf
+Converts otadata partition into ELF. Writes to otadata.elf
 
-`$ python3 esp32_image_parser.py create_elf espwroom32.bin -partition ota_0 -output ota_0.elf`
+`$ uv run --script esp32_image_parser.py create_elf flash_dump.bin -partition otadata -output otadata.elf`
 
 ## Dump a specific NVS partition
 Dumps the nvs partition
 
-`$ python3 esp32_image_parser.py dump_nvs esp32_flashdump.bin -partition nvs`
+`$ uv run --script esp32_image_parser.py dump_nvs esp32_flashdump.bin -partition nvs`
 
 Dumps the nvs partition as a JSON
 
-`$ python3 esp32_image_parser.py dump_nvs flashdump/esp32_flashdump.bin -partition nvs -nvs_output_type json`
+`$ uv run --script esp32_image_parser.py dump_nvs flashdump/esp32_flashdump.bin -partition nvs -nvs_output_type json`
