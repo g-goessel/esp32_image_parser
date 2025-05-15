@@ -29,9 +29,9 @@ Dumps to spiffs.dump
 `$ uv run --script esp32_image_parser.py dump_partition flash_dump.bin -partition spiffs -output spiffs.dump`
 
 ## Convert a specific app partition into an ELF file
-Converts otadata partition into ELF. Writes to otadata.elf
+Converts app0 partition into ELF. Writes to app0.elf
 
-`$ uv run --script esp32_image_parser.py create_elf flash_dump.bin -partition otadata -output otadata.elf`
+`$ uv run --script esp32_image_parser.py create_elf flash_dump.bin -partition app0 -output app0.elf`
 
 ## Dump a specific NVS partition
 Dumps the nvs partition
